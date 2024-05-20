@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/png">
-        <title>Mehmonxona</title>
+        <title>Best Hotel</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     </head>
-    <body>
+    <body style="background-color: aquamarine;">
         <!--================Header Area =================-->
         <header class="header_area">
             <div class="container">
@@ -41,11 +41,12 @@
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
                                 <ul class="dropdown-menu">
-                                    {% for category in categories %}
+                                    {% for category in category %}
                                         <li class="nav-item"><a class="nav-link" href="{% url 'category' category.id %}">{{category.name}}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li> 
+                            <li class="nav-item active"><a class="nav-link" href="{% url 'cafe' %}">Taomlar</a></li>
                             <li class="nav-item active"><a class="nav-link" href="{% url 'create_product' %}">Add</a></li>
                         </ul>
                     </div> 
@@ -59,7 +60,7 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Best Hotel Gallery</h2>
+                    <h2 class="page-cover-tittle">Best Hotels Gallery</h2>
                     <ol class="breadcrumb">
                     </ol>
                 </div>

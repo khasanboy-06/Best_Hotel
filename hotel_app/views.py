@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Category, Gallary
+from .models import Product, Category, Gallary, Cafe
 from .forms import CreatProduct
 
 def home(request):
@@ -21,17 +21,22 @@ def batafsil(request, id):
 
 
 def about(request):
-    product = Product.objects.all()
+    # product = Product.objects.all()
     category = Category.objects.all()
     return render(request, 'about.html', context={"category":category})
 
 
 
 def gallary(request):
-    product = Product.objects.all()
     category = Category.objects.all()
     image = Gallary.objects.all()
-    return render(request, 'gallary.html', context={"image":image, "product":product, "category":category})
+    return render(request, 'gallary.html', context={"image":image, "category":category})
+
+
+def cafe(request):
+    category = Category.objects.all()
+    image = Cafe.objects.all()
+    return render(request, 'cafe.html', context={"image":image,  "category":category})
 
 
 
@@ -61,3 +66,4 @@ def update_product(request, id):
             form.save()
             return redirect('/')
     return render(request, 'create_product.html', context={"form": form})
+

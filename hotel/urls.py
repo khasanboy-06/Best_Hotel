@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from hotel_app.views import home, category, batafsil, about, gallary, delete_product, create_product, update_product
+from hotel_app.views import home, category, batafsil, about, gallary, delete_product, create_product, update_product, cafe
 from django.conf import settings  
 from django.conf.urls.static import static  
 
@@ -30,5 +30,6 @@ urlpatterns = [
     path('delete_product/<int:id>/', delete_product, name='delete_product'),
     path('create_product/', create_product, name='create_product'),
     path('update_product/<int:id>/', update_product, name="update_product"),
+    path('cafe/', cafe, name='cafe'),
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

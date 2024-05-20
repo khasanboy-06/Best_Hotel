@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     </head>
-    <body style="background-color: rgb(190, 187, 183);">
+    <body>
         <!--================Header Area =================-->
         <header class="header_area">
             <div class="container">
@@ -35,7 +35,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li> 
-                            <li class="nav-item active"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'gallary' %}">Gallery</a></li>
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
@@ -44,9 +44,9 @@
                                     <li class="nav-item"><a class="nav-link" href="{% url 'category' category.id %}">{{category.name}}</a></li>
                                     {% endfor %}
                                 </ul>
-                            </li> 
+                            </li>
                             <li class="nav-item active"><a class="nav-link" href="{% url 'cafe' %}">Taomlar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'create_product' %}">Add</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'create_product' %}">Add</a></li> 
                         </ul>
                     </div> 
                 </nav>
@@ -59,87 +59,42 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Biz Haqimizda</h2>
-                    <ol class="breadcrumb">
-                      
-                    </ol>
+                    <h2 class="page-cover-tittle">Restaurant</h2>
                 </div>
             </div>
         </section>
         <!--================Breadcrumb Area =================-->
         
-        <!--================ About History Area  =================-->
-        <section class="about_history_area section_gap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 d_flex align-items-center">
-                        <div class="about_content ">
-                            <h2 class="title title_color">Biz haqimizda ma'lumot</h2>
-                            <p style="color: black;">Biz raqobatbardosh narxlarda keng assortimentni taklif qilamiz - ro'yxatdan o'tgandan so'ng darhol. RateHawk platformasida ko'proq imkoniyatlarni o'rganing va bizga qo'shiling. Minglab kurortlar, kvartiralar va dunyodagi eng yirik mehmonxonalar tarmog'ini o'z ichiga olgan bir lahzada tasdiqlanadigan keng assortiment.</p>
-                            <a href="{% url 'gallary' %}" class="button_hover theme_btn_two">Galareyaga o'tish</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="{% static 'image/about_bg.jpg' %}" alt="img">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--================ About History Area  =================-->
-        
-        <!--================ Facilities Area  =================-->
-        <section class="facilities_area section_gap">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
-            </div>
+        <!--================ Accomodation Area  =================-->
+        <section class="accomodation_area section_gap">
             <div class="container">
                 <div class="section_title text-center">
-                    <h2 class="title_w">Bizdagi Qulayliklar</h2>
-                    <p>Who are in extremely love with eco friendly system.</p>
+                    <h2 class="title_color">Maxsus taomlar</h2>
                 </div>
                 <div class="row mb_30">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-dinner"></i>Restaurant</h4>
-                            <p>Istagan restaranga kirib sifatli taomlardan iste'mol qilishingiz mumkin. Bizning nom bilan kirsangiz chegirmasi bor.</p>
+                    {% for image in image %}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="accomodation_item text-center">
+                            <div class="hotel_img">
+                                <img src="{{image.image.url}}" alt="">
+                                <a href="#" class="btn theme_btn button_hover">Book now</a>
+                            </div>
+                            <a href="#"><h4 class="sec_h4">{{image.name}}</h4></a>
+                            <h5>${{image.price}}</h5>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-bicycle"></i>Sports CLub</h4>
-                            <p>Sizga tavfsiya qilgan barcha mehmonxonalarda sport zali bor va siz undan bepul foydalana olasiz.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-shirt"></i>Swimming Pool</h4>
-                            <p>Sizga tavfsiya qilgan barcha mehmonxonalarda suzish havzasi bor va siz undan bepul foydalana olasiz.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-car"></i>Rent a Car</h4>
-                            <p>Borgan joyingizda arzon narxlarda mashinalarni ijaraga olishingiz mumkin.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-construction"></i>Gymnesium</h4>
-                            <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="facilities_item">
-                            <h4 class="sec_h4"><i class="lnr lnr-coffee-cup"></i>Bar</h4>
-                            <p>Hordiq chiqarishingiz va do'stlar orttirishingiz uchun Barlar bor.</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
-        <!--================ Facilities Area  =================-->
+        <!--================ Accomodation Area  =================-->
+
+
+        <!--================ start footer Area  =================-->	
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white"> &copy;Best Hotel 2024</p></div>
         </footer>
+		<!--================ End footer Area  =================-->
         
         
         <!-- Optional JavaScript -->
